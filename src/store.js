@@ -1,6 +1,8 @@
 import { createStore, combineReducers } from 'redux'
+import playbookReducer from './reducers/playbookReducer';
+import hunterMoveReducer from './reducers/hunterMoveReducer';
 
-const appReducer = (state={}, action) => {
+const rootReducer = (state={}, action) => {
     switch(action.type){
         case "HOME":
             return state
@@ -8,6 +10,12 @@ const appReducer = (state={}, action) => {
             return state
     }
 }
+
+const appReducer = combineReducers({
+    playbooks: playbookReducer,
+    hunterMoves: hunterMoveReducer,
+    root: rootReducer
+}) 
 
 export const store = createStore(
     appReducer,

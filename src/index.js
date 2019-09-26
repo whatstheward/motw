@@ -7,12 +7,10 @@ import 'semantic-ui-css/semantic.min.css'
 import { Provider } from 'react-redux'
 import { store } from './store'
 import { BrowserRouter as Router } from "react-router-dom"
-import Navbar from './components/Navbar'
 
 ReactDOM.render(
     <Provider store={store}>
         <Router>
-        <Navbar />
             <App />
         </Router>
     </Provider>

@@ -1,22 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import {Route, Link, Switch} from "react-router-dom"
 import './App.css';
-import HomePage from './components/Home.js'
-import Navbar from './components/Navbar';
-import Login from './components/Login'
-import CharacterSheets from './containers/character_sheets';
-import Moves from './containers/moves'
+import Navbar from './components/Navbar'
+import Main from './containers/Main';
+import { Grid } from 'semantic-ui-react';
 
 function App() {
   return (
     <div className="App">
-      <Switch>
-        <Route path="/home" render={()=><HomePage/>}/>
-        <Route path="/login" render={()=><Login/>}/>
-        <Route path="/charactersheet" render={()=><CharacterSheets/>}/>
-        <Route path="/moves" render={()=><Moves/>}/>
-      </Switch>
+        <Navbar />
+        <Grid>
+          <Grid.Column width={1} />
+          <Grid.Column width={14} >
+          <Main />
+          </Grid.Column>
+          <Grid.Column width={1} />
+        </Grid>
     </div>
   );
 }

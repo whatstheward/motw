@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card } from 'semantic-ui-react'
+import { Card, Grid } from 'semantic-ui-react'
 import '../css/Moves.css'
 
 class Moves extends React.Component{
@@ -18,7 +18,7 @@ class Moves extends React.Component{
 
     buildMoveCard = (move)=>{
         return (
-            <Card>
+            <Card id="moveCard">
                 <h2>{move.name}</h2>
                 <h5>Rating: {move.rating} </h5>
                 <p dangerouslySetInnerHTML={{__html: move.description}}></p>
@@ -30,7 +30,7 @@ class Moves extends React.Component{
 
     render(){
         return(
-            <Card.Group itemsPerRow={3}>
+            <Card.Group id="group" >
             {this.props.hunterMoves.map(move => this.buildMoveCard(move))}
             </Card.Group>
         )

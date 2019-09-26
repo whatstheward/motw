@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid } from 'semantic-ui-react';
 
 
-const Playbook = (props) => {
+const Playbook = (props) => {   
     return (
         <Grid id="playbook">
             <Grid.Column width={5} id="left">

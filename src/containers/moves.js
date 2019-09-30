@@ -7,7 +7,7 @@ import PlaybookMoveSelector from '../components/PlaybookMoveSelector'
 class Moves extends React.Component{
 
     state={
-        playbooks: ["All"]
+        playbooks: ["All", "The Chosen", "The Crooked", "The Divine"]
     }
 
     componentDidMount(){

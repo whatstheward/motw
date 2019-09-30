@@ -2,7 +2,7 @@ li, p {
     text-align: left;
 }
 
-#group {
+.group {
         display: -ms-flexbox;
         -ms-flex-direction: column;
         -ms-flex-wrap: wrap;
@@ -10,11 +10,28 @@ li, p {
         flex-direction: column;
         flex-wrap: wrap;
         height: 100vw;
+        align-content: center;
+
+}
+
+#moveCard >h2{
+    font-family: 'Special Elite', cursive;
+}
+#moveCard >h5{
+    font-family: 'Special Elite', cursive;
 }
 
 #moveCard{
     padding: 2em;
+    max-height: 50vw;
+    margin: 1em;
+    display: flex !important;
+    font-family: 'Special Elite', cursive;
+    overflow-y: scroll;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
 }
+#moveCard::-webkit-scrollbar { width: 0 !important }
 
 
 

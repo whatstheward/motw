@@ -8,7 +8,7 @@ const Playbook = (props) => {
             <Grid.Column width={5} id="left">
             <h2 id="playbook-name">{props.character.selected.name}:</h2>
             <div id="left-down">
-            <img id="playbook-image" src={ props.character.selected_image} />
+            <img id="playbook-image" alt={props.character.selected.name} src={ props.character.selected_image} />
             <p id="stale-text">{props.character.selected.fascimile}</p>
             </div>
             </Grid.Column>

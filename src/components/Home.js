@@ -1,10 +1,12 @@
 import React from 'react'
-import { Card, Image } from 'semantic-ui-react';
+
 
 
 const HomePage = () =>{
     return(
-        <image src={"./images/Motw_logo.png"}/>
+        <div>
+            <image src={"./images/Motw_logo.png"}/>
+        </div>
     )
 }
 

@@ -9,11 +9,9 @@ li, p {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        height: 300vw;
-        overflow: cover;
+        height: 100vw;
         overflow-x: scroll; 
         align-content: center;
-
 }
 
 #moveCard >h2{
@@ -25,7 +23,8 @@ li, p {
 
 #moveCard{
     padding: 2em;
-    max-height: 50vw;
+    max-height: 35vw;
+    min-height: 20vw;
     margin: 1em;
     display: flex !important;
     font-family: 'Special Elite', cursive;

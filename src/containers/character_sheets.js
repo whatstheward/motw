@@ -12,21 +12,12 @@ class CharacterSheets extends React.Component {
 
     state={
         selected: null,
-        selected_image: null,
-        playbooks: null
-    }
-
-    componentDidMount(){
-        fetch('http://localhost:3000/playbooks')
-        .then(res => res.json())
-        .then(data => {
-            this.setState({playbooks: data})
-            this.props.storePlaybooks(data)})
+        selected_image: null
     }
 
     buildIcons(){
-        if(this.state.playbooks){
-        return this.state.playbooks.map(playbook => this.printIcon(playbook))
+        if(this.props.allPlaybooks){
+        return this.props.allPlaybooks.map(playbook => this.printIcon(playbook))
         }else{
         return null
         }
@@ -89,16 +80,11 @@ class CharacterSheets extends React.Component {
     }
 }
 
-const mapDispatchToProps = dispatch =>{
-    return{
-        storePlaybooks: (data) => dispatch({type:"ADD PLAYBOOKS", data: data})
-    }
-}
 
 const mapStateToProps = state =>{
     return{
-        playbooks: state.playbooks.playbooks
+        allPlaybooks: state.playbooks.playbooks
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CharacterSheets)
+export default connect(mapStateToProps)(CharacterSheets)

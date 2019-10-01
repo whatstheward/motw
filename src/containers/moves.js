@@ -7,7 +7,7 @@ import PlaybookMoveSelector from '../components/PlaybookMoveSelector'
 class Moves extends React.Component{
 
     state={
-        playbooks: ["All", "The Chosen", "The Crooked", "The Divine"]
+        selectedPlaybooks: ["All", "The Chosen", "The Crooked", "The Divine"]
     }
 
     componentDidMount(){
@@ -16,13 +16,19 @@ class Moves extends React.Component{
         .then(data => this.props.storeHunterMoves(data))
     }
 
-    handleClick=()=>{
-        console.log('clicked')
+    handleClick=(playbook)=>{
+        if(this.state.selectedPlaybooks.includes(playbook)){
+        let newSelections = [...this.state.selectedPlaybooks].filter(selected => selected !== playbook)
+        this.setState({selectedPlaybooks: newSelections})
+    }else{
+        let newSelections = [...this.state.selectedPlaybooks, playbook]
+        this.setState({selectedPlaybooks: newSelections})
+    }
     }
 
     renderCards = () => {
         let movesToPrint = []
-        this.props.hunterMoves.map(move => {if(this.state.playbooks.some(playbook => playbook === move.playbook))
+        this.props.hunterMoves.map(move => {if(this.state.selectedPlaybooks.some(playbook => playbook === move.playbook))
         movesToPrint.push(move)})
 
         return movesToPrint.map(move => this.buildMoveCard(move))
@@ -58,7 +64,7 @@ class Moves extends React.Component{
     render(){
         return(
             <>
-            <PlaybookMoveSelector id="moveSelector" playbooks={this.state.playbooks}handleClick={this.handleClick} />
+            <PlaybookMoveSelector id="moveSelector" selectedPlaybooks={this.state.selectedPlaybooks} handleClick={this.handleClick} />
             <Card.Group className="group" >
             {this.renderCards()}
             </Card.Group>

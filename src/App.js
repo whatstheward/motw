@@ -8,13 +8,7 @@ function App() {
   return (
     <div className="App">
         <Navbar />
-        <Grid>
-          <Grid.Column width={1} />
-          <Grid.Column width={14} >
-          <Main />
-          </Grid.Column>
-          <Grid.Column width={1} />
-        </Grid>
+        <Main />
     </div>
   );
 }

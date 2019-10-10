@@ -1,12 +1,11 @@
 import React from 'react';
-import {Route, Link, Switch} from "react-router-dom"
+import {Route, Switch} from "react-router-dom"
 import HomePage from '../components/Home'
-import Navbar from '../components/Navbar';
 import Login from '../components/Login'
 import CharacterSheets from './character_sheets';
 import Moves from './moves'
-import { Grid } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import '../css/Main.css'
 
 class Main extends React.Component {
 
@@ -18,7 +17,7 @@ class Main extends React.Component {
 
   render(){
     return (
-        <div className="App">
+        <div className="main">
           <Switch>
             <Route path="/home" render={()=><HomePage/>}/>
             <Route path="/login" render={()=><Login/>}/>

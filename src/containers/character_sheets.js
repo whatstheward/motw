@@ -5,10 +5,7 @@ import { connect } from 'react-redux'
 import '../css/characterSheets.css'
 import Playbook from '../components/Playbook'
 
-const characters = [] 
-
 class CharacterSheets extends React.Component {
-
 
     state={
         selected: null,
@@ -59,22 +56,18 @@ class CharacterSheets extends React.Component {
 
     render(){
         return(
-            <Grid>
-                <Grid.Column width={1}/>
-                <Grid.Column width={14}>
-                    <Grid.Row id="characterList">
+            <div>
+                    <div id="characterList">
                         {this.buildIcons()}
-                    </Grid.Row>
-                <Grid.Row>
+                    </div>
+                <div>
                     {this.state.selected ? 
                     <Playbook character={this.state} />
                     :
                     null
                     }
-                </Grid.Row>
-                </Grid.Column>
-                <Grid.Column width={1}/>
-            </Grid>
+                </div>
+            </div>
 
         )
     }

@@ -7,7 +7,7 @@ import PlaybookMoveSelector from '../components/PlaybookMoveSelector'
 class Moves extends React.Component{
 
     state={
-        selectedPlaybooks: ["All", "The Chosen", "The Crooked", "The Divine"]
+        selectedPlaybooks: ["All"]
     }
 
     componentDidMount(){
@@ -65,9 +65,9 @@ class Moves extends React.Component{
         return(
             <>
             <PlaybookMoveSelector id="moveSelector" selectedPlaybooks={this.state.selectedPlaybooks} handleClick={this.handleClick} />
-            <Card.Group className="group" >
-            {this.renderCards()}
-            </Card.Group>
+                <div className="group " >
+                {this.renderCards()}
+                </div>
             </>
         )
     }

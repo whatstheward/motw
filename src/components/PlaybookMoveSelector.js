@@ -6,7 +6,7 @@ class PlaybookMoveSelector extends React.Component{
 
     render(){
             return(
-                <div>
+                <div id="moveSelector">
                 {this.props.allPlaybooks.map(playbook=> <PlaybookSelectorToggle handleClick={this.props.handleClick} selectedPlaybooks={this.props.selectedPlaybooks} playbook={playbook.name} />)}
                 </div>
             )

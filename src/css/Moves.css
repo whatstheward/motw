@@ -11,8 +11,27 @@ li, p {
         flex-wrap: wrap;
         padding: 0vw 5vw;
         align-content: center;
-        width: auto;
         height: 100vw;
+        overflow-x: auto;
+}
+
+#moveSelector{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+}
+
+#moveSelector > button {
+    margin: 1vw;
+    height: 2em;
+    border-radius: 10%;
+    font-family: 'Special Elite', cursive;
+}
+
+#moveSelector > button:hover{
+    font-weight: bold;
+    font-size: 125%;
 }
 
 #moveCard >h2{
@@ -24,7 +43,7 @@ li, p {
 
 #moveCard{
     padding: 2em;
-    max-height: 35vw;
+    max-height: 50vw;
     min-height: 20vw;
     margin: 1em;
     text-align: center;

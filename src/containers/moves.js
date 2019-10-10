@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Grid } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
 import '../css/Moves.css'
 import PlaybookMoveSelector from '../components/PlaybookMoveSelector'
 
 class Moves extends React.Component{
 
     state={
+        showPlaybooks: true,
         selectedPlaybooks: "All"
     }
 
@@ -53,12 +54,24 @@ class Moves extends React.Component{
         )
     }
 
+    switch = () => {
+        this.setState(prevState => ({
+          showPlaybooks: !prevState.showPlaybooks
+        }));
+      };
+
+      listSwitch = () => {
+        this.setState(state => ({
+          selectedPlaybooks: !state.selectedPlaybooks
+        }));
+      };
+
     render(){
         return(
             <>
-            <PlaybookMoveSelector id="moveSelector" selectedPlaybooks={this.state.selectedPlaybooks} handleClick={this.handleClick} />
+            <PlaybookMoveSelector selectedPlaybooks={this.state.selectedPlaybooks} handleClick={this.handleClick} />
                 <div className="group " >
-                {this.renderCards()}
+                        {this.renderCards()}
                 </div>
             </>
         )

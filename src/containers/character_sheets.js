@@ -1,6 +1,4 @@
 import React from 'react'
-import characterImages from '../containers/character_images'
-import { Image, Grid, GridColumn } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import '../css/characterSheets.css'
 import Playbook from '../components/Playbook'
@@ -14,7 +12,8 @@ class CharacterSheets extends React.Component {
 
     buildIcons(){
         if(this.props.allPlaybooks){
-        return this.props.allPlaybooks.map(playbook => this.printIcon(playbook))
+        let p = [...this.props.allPlaybooks].filter(pb => pb.name !== "All")
+        return p.map(playbook => this.printIcon(playbook))
         }else{
         return null
         }

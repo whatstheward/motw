@@ -1,7 +1,8 @@
-export default (state={playbooks:[]}, action) =>{
+export default (state={playbooks:[{name: "All"}]}, action) =>{
     switch(action.type){
         case "ADD PLAYBOOKS":
-        return {playbooks: action.data}
+        let newPlaybooks = [...state.playbooks, action.data].flat()
+        return {playbooks: newPlaybooks}
     default:
         return state
     }

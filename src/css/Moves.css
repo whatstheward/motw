@@ -9,9 +9,9 @@ li, p {
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
-        overflow-x:auto;
         padding: 0vw 5vw;
         align-content: center;
+        width: auto;
         height: 100vw;
 }
 

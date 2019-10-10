@@ -7,7 +7,7 @@ import PlaybookMoveSelector from '../components/PlaybookMoveSelector'
 class Moves extends React.Component{
 
     state={
-        selectedPlaybooks: ["All"]
+        selectedPlaybooks: "All"
     }
 
     componentDidMount(){
@@ -17,19 +17,11 @@ class Moves extends React.Component{
     }
 
     handleClick=(playbook)=>{
-        if(this.state.selectedPlaybooks.includes(playbook)){
-        let newSelections = [...this.state.selectedPlaybooks].filter(selected => selected !== playbook)
-        this.setState({selectedPlaybooks: newSelections})
-    }else{
-        let newSelections = [...this.state.selectedPlaybooks, playbook]
-        this.setState({selectedPlaybooks: newSelections})
-    }
+        this.setState({selectedPlaybooks: playbook})
     }
 
     renderCards = () => {
-        let movesToPrint = []
-        this.props.hunterMoves.map(move => {if(this.state.selectedPlaybooks.some(playbook => playbook === move.playbook))
-        movesToPrint.push(move)})
+        let movesToPrint =  this.props.hunterMoves.filter(move => this.state.selectedPlaybooks === move.playbook)
 
         return movesToPrint.map(move => this.buildMoveCard(move))
     }

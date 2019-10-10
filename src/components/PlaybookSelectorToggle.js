@@ -1,9 +1,9 @@
 import React from 'react';
-import { Checkbox } from 'semantic-ui-react'
+import { Checkbox, Button } from 'semantic-ui-react'
 
 const PlaybookSelectorToggle = (props)=> {
      return(
-        <Checkbox onClick={()=> props.handleClick(props.playbook)} checked={props.selectedPlaybooks.some(playbook => playbook === props.playbook)} label={props.playbook} toggle/>         
+        <Button onClick={()=> props.handleClick(props.playbook)}  label={props.playbook}/>         
      )
 }
 export default PlaybookSelectorToggle

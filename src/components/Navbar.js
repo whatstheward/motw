@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
-import PropTypes from 'prop-types'
 import { Menu, Image } from 'semantic-ui-react'
 import "../images/Motw_logo.png"
 
@@ -9,11 +8,6 @@ class Navbar extends React.Component {
     
     state ={ activeItem: ''}
 
-    static propTypes = {
-        match: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired
-      };
 
     handleItemClick = (e, { name }) => {
         let url = name.toLowerCase().replace(" ", "")
@@ -41,4 +35,4 @@ class Navbar extends React.Component {
     }
 }
 
-export default withRouter(Navbar)
+export default withRouter(connect()(Navbar))

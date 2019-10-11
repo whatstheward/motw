@@ -6,11 +6,6 @@ import PlaybookMoveSelector from '../components/PlaybookMoveSelector'
 
 class Moves extends React.Component{
 
-    state={
-        showPlaybooks: true,
-        selectedPlaybooks: "All"
-    }
-
     componentDidMount(){
         fetch('http://localhost:3000/hunter_moves')
         .then(res => res.json())
@@ -22,8 +17,15 @@ class Moves extends React.Component{
     }
 
     renderCards = () => {
-        let movesToPrint =  this.props.hunterMoves.filter(move => this.state.selectedPlaybooks === move.playbook)
+        let movesToPrint = this.props.hunterMoves.filter(move => move.playbook === "All")
+        if(this.props.selectedPlaybook){
+        movesToPrint =  this.props.hunterMoves.filter(move => this.props.selectedPlaybook.name === move.playbook)
+        }
+        return movesToPrint.map(move => this.buildMoveCard(move))
+    }
 
+    renderBasicMoves = () => {
+        let movesToPrint = this.props.hunterMoves.filter(move => move.playbook === "All")
         return movesToPrint.map(move => this.buildMoveCard(move))
     }
 
@@ -54,24 +56,15 @@ class Moves extends React.Component{
         )
     }
 
-    switch = () => {
-        this.setState(prevState => ({
-          showPlaybooks: !prevState.showPlaybooks
-        }));
-      };
-
-      listSwitch = () => {
-        this.setState(state => ({
-          selectedPlaybooks: !state.selectedPlaybooks
-        }));
-      };
-
     render(){
         return(
             <>
-            <PlaybookMoveSelector selectedPlaybooks={this.state.selectedPlaybooks} handleClick={this.handleClick} />
                 <div className="group " >
-                        {this.renderCards()}
+                        {this.props.selectedPlaybook ? 
+                        this.renderCards()
+                        :
+                        null}
+                        {this.renderBasicMoves()}
                 </div>
             </>
         )
@@ -86,7 +79,8 @@ const mapDispatchToProps = (dispatch)=>{
 
 const mapStateToProps = state =>{
     return{
-        hunterMoves: state.hunterMoves.hunterMoves
+        hunterMoves: state.hunterMoves.hunterMoves,
+        selectedPlaybook: state.playbooks.selectedPlaybook
     }
 }
 

@@ -6,6 +6,7 @@ import CharacterSheets from './character_sheets';
 import Moves from './moves'
 import { connect } from 'react-redux';
 import '../css/Main.css'
+import PlaybookMoveSelector from '../components/PlaybookMoveSelector';
 
 class Main extends React.Component {
 
@@ -18,6 +19,7 @@ class Main extends React.Component {
   render(){
     return (
         <div className="main">
+          <PlaybookMoveSelector />
           <Switch>
             <Route path="/home" render={()=><HomePage/>}/>
             <Route path="/login" render={()=><Login/>}/>

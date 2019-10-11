@@ -5,67 +5,19 @@ import Playbook from '../components/Playbook'
 
 class CharacterSheets extends React.Component {
 
-    state={
-        selected: null,
-        selected_image: null
+    componentDidUpdate = (prevProps) => {
+       return prevProps.selectedPlaybook !== this.props.selectedPlaybook ? this.printPlaybook : null 
     }
 
-    buildIcons(){
-        if(this.props.allPlaybooks){
-        let p = [...this.props.allPlaybooks].filter(pb => pb.name !== "All")
-        return p.map(playbook => this.printIcon(playbook))
-        }else{
-        return null
-        }
+    printPlaybook = () => {
+        return this.props.selected ? <Playbook /> : null
+            
     }
-
-    printIcon(playbook){
-        const imgName = playbook.name.toLowerCase().replace("the ","").replace("-","")
-        const path = require(`../images/the_${imgName}.png`)
-            return(
-                <div>
-                    <img src={path} 
-                    name={playbook.name} 
-                    id="small-character-icon" 
-                    onClick={(e)=>this.handleClick(e, playbook)} 
-                    onMouseEnter={(e)=>this.showName(e)} 
-                    onMouseOut={(e)=>this.hideName(e)}/>
-                    <h3 id="name">
-                        {playbook.name}
-                    </h3>
-                </div>)
-    }
-
-    showName = (e) =>{
-        let name = e.target.parentElement
-        name.querySelector('h3').style.visibility = "visible"
-    }
-    
-    hideName = (e) =>{
-        let name = e.target.parentElement
-        name.querySelector('h3').style.visibility = "hidden"
-    }
-
-    handleClick = (e, playbook) =>{
-        let name = e.target.parentElement
-        name.querySelector('h3').style.visibility = "hidden"
-        this.setState({selected_image: e.target.src, selected: playbook}) 
-    }
-    
 
     render(){
         return(
             <div>
-                    <div id="characterList">
-                        {this.buildIcons()}
-                    </div>
-                <div>
-                    {this.state.selected ? 
-                    <Playbook character={this.state} />
-                    :
-                    null
-                    }
-                </div>
+                {this.printPlaybook()}    
             </div>
 
         )
@@ -75,7 +27,8 @@ class CharacterSheets extends React.Component {
 
 const mapStateToProps = state =>{
     return{
-        allPlaybooks: state.playbooks.playbooks
+        selected: state.playbooks.selectedPlaybook,
+
     }
 }
 

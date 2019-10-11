@@ -6,13 +6,16 @@ import * as serviceWorker from './serviceWorker';
 import 'semantic-ui-css/semantic.min.css'
 import { Provider } from 'react-redux'
 import { store } from './store'
-import { BrowserRouter as Router } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom"
+import {createBrowserHistory} from 'history'
+
+const history = createBrowserHistory()
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
-            <App />
-        </Router>
+        <BrowserRouter >
+            <App history={history} />
+        </BrowserRouter>
     </Provider>
     , document.getElementById('root'));
 

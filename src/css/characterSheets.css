@@ -1,18 +1,25 @@
 #characterList {
     display: flex;
     justify-content:space-between;
-    width: 100%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
-#small-character-icon {
+#small-character-icon > img {
     border-radius: 100%;
     object-fit: cover;
     object-position: 100% 0;
     height: 12vh;
     width: 12vh;
+    
+}
+#small-character-icon{
+    height: 12vh;
+    width: 12vh;
     min-height: 6vh;
     min-width: 6vh;
-    
 }
 #small-character-icon:hover {  
     transition: all ease-in .5s;      
